@@ -3,6 +3,11 @@ import openai
 import requests
 import json
 import os
+import dotenv
+from dotenv import load_dotenv
+
+
+load_dotenv()
 
 openai.api_key = os.environ.get('OPENAI_API_KEY')
 
@@ -67,6 +72,8 @@ def transcribe(audio):
 
     return chat_transcript,'output.wav'
 
+
+
 # css = """
 #       #col-container {max-width: 80%; margin-left: auto; margin-right: auto;}
 #       #header {text-align: center;}
@@ -85,5 +92,5 @@ def transcribe(audio):
 
 # Define the Gradio UI interface
 # ui = gr.Interface(fn=transcribe, inputs=gr.Audio(source="microphone", type="filepath"), outputs="text")
-ui = gr.Interface(fn=transcribe, inputs=gr.Audio(source="microphone", type="filepath"), outputs=['text','audio'])
+ui = gr.Interface(fn=transcribe, inputs=gr.Audio(source="microphone", type="filepath"), title='Talk to AI Steve Jobs', outputs=['text','audio'],description = """Click on Record from microphone and start speaking, and when you're done, click on Stop Recording. Then click on Submit. The AI Steve Jobs will then answer your question. You can then continue to ask follow-up questions by clicking on Clear, and then using Record from microphone -> Stop Recording -> Submit  AI Steve Jobs will also remember the previous questions and answers.""")
 ui.launch(debug=True)
