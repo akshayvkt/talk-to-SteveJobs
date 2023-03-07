@@ -74,23 +74,6 @@ def transcribe(audio):
 
 
 
-# css = """
-#       #col-container {max-width: 80%; margin-left: auto; margin-right: auto;}
-#       #header {text-align: center;}
-#         }
-#         """
-
-# with gr.Blocks(css=css) as ui:
-    
-    
-#     with gr.Column(elem_id="col-container"):
-#         gr.Markdown("""## Talk to AI Steve Jobs: Audio-to-Text+Audio generation
-#                     Powered by ChatGPT + Whisper + ElevenLabs + HuggingFace <br>
-#                     <br>
-#                     """,
-#                     elem_id="header")
-
-# Define the Gradio UI interface
 # ui = gr.Interface(fn=transcribe, inputs=gr.Audio(source="microphone", type="filepath"), outputs="text")
 ui = gr.Interface(fn=transcribe, inputs=gr.Audio(source="microphone", type="filepath"), title='Talk to AI Steve Jobs', outputs=['text','audio'],description = """Click on Record from microphone and start speaking, and when you're done, click on Stop Recording. Then click on Submit. The AI Steve Jobs will then answer your question. You can then continue to ask follow-up questions by clicking on Clear, and then using Record from microphone -> Stop Recording -> Submit  AI Steve Jobs will also remember the previous questions and answers.""")
 ui.launch(debug=True)
